@@ -2,7 +2,7 @@ import cv2
 import sys
 import numpy as np
 
-class preprocessImageWithKernles(object):
+class preprocessImageWithKernels(object):
     """
     create vector features after applying kernels
     """

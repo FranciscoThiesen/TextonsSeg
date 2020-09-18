@@ -2,7 +2,7 @@ import cv2
 import sys
 import numpy as np
 from TextonsSeg.create_LM_filters import LMFilters
-from TextonsSeg.convolve_LM_filters import preprocessImageWithKernles
+from TextonsSeg.convolve_LM_filters import preprocessImageWithKernels
 from TextonsSeg.get_final_vectors import createVector
 from TextonsSeg.K_Means import KMeansLMfilters
 from TextonsSeg.reconstruct_image import reconstructImage
@@ -37,14 +37,19 @@ class Textons(object):
         self.type_of_assignment = type_of_assignment
 
     def textons(self):
-        #create LM filters
+        # Criacao dos filtros descritos no paper Leung & Malik 
         LM_filters = LMFilters()
-        filters = np.array(LM_filters.makeLMfilters())#import filters as numpy array
+        
+        # Importação desses filtros como np.array
+        filters = np.array(LM_filters.makeLMfilters())
         #check filters
         #print("filters created...")
         #print(filters.shape)
         #genrate vectors applying kMeans
-        I = preprocessImageWithKernles(self.im, self.im_color)
+        # Aplicando preprocessamento
+        I = preprocessImageWithKernels(self.im, self.im_color)
+        
+        # É realmente necessário aplicar gaussian blur na imagem?
         I.merge()
         I.apply_kernel(filters) 
         ##I.apply_kernel(np.load("LMkernels.npy"))

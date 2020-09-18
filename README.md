@@ -1,7 +1,7 @@
 # TextonsSeg
 Repo for PyPi package
 # Textons - Texture Based Image Segmentation
-Textons using LM filters
+Textons using LM filters -> Filtros de Leung Malik (https://people.eecs.berkeley.edu/~malik/papers/LM-3dtexton.pdf)
 
 The code here is an implementation of textons using LM filters.
 

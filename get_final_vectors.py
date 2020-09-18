@@ -18,6 +18,12 @@ class createVector(object):
         generate feature vector with row, col and cluster center values
         """
         hold = []
+        
+        ''' Perguntas a serem respondidas:
+        1 - Precisa mesmo adicionar r,g,b ao vetor?
+        2 - Faz sentido adicionar a posicao de cada pixel como uma dimensao nesse vetor? (i, j)
+        '''
+
         for i in range(self.im.shape[0]):
             for j in range(self.im.shape[1]):
                 b, g, r = self.im_color[i, j, :]

@@ -4,7 +4,7 @@ import numpy as np
 np.random.seed(128)
 
 class reconstructImage(object):
-    def __init__(self, feature_vector, image, number_of_centers, assignment_type='RANDOM'):
+    def __init__(self, feature_vector, image, number_of_centers, assignment_type=0):
         '''
         assignment type 'RANDOM' is suited more for higher number of clusters 
         assignment type 'DEFINED' is better suited when number of clusters is less than 15
@@ -19,22 +19,21 @@ class reconstructImage(object):
         """
         assign pixel values from the feature vectors
         """
-        if(self.type==0):
+        # non zero type -> DEFINED assignement type
+        # else -> Random assignment
+        if(self.type != 1):
             colors = np.random.randint(256, size=(int(self.c), 1))
-
-        elif (self.type==1):
+        else:
             colors = list()
             for i in range(0, 256, int(256//int(self.c))):
                 colors.append([i])
             colors = np.array(colors)
-        else:
-            print('color scheme unavailable !!')
-            print('using colors scheme "RANDOM"')
 
         image = np.zeros_like(self.im)
+        
         for _ in range(self.v.shape[0]):
             x,y,k = self.v[_,self.v.shape[1]-3], self.v[_,self.v.shape[1]-2], self.v[_,self.v.shape[1]-1]
-           # print(x,y, k)
+            print(x,y,k)
             image[int(x),int(y)] = colors[int(k)]
 
         return image
